@@ -6,20 +6,20 @@ steps:
       - "cargo clippy"
     plugins:
       - docker#v5.9.0:
-          image: "rust:1.74.1"
+          image: "rust:1.87.0"
 
   - label: ":rust: Test"
     key: test
     command: "cargo test"
     plugins:
       - docker#v5.9.0:
-          image: "rust:1.74.1"
+          image: "rust:1.87.0"
 
   - label: ":rust: Build"
     command: "cargo build --release"
     depends_on: ["lint", "test"]
     plugins:
       - docker#v5.9.0:
-          image: "rust:1.74.1"
+          image: "rust:1.87.0"
     artifact_paths:
       - "target/release/*"
